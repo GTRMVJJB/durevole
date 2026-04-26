@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Durevole B.V. – Vakmanschap zonder zorgen | Amstelveen</title>
+<meta name="description" content="Durevole B.V. – Exclusieve renovaties in Amstelveen en omgeving. Badkamers, keukens, uitbouwen en complete woningrenovaties. Vakmanschap zonder zorgen." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'rich-black': '#080808',
+          'gold': '#C5A059',
+          'gold-light': '#D4B575',
+          'gold-dark': '#A08040',
+          'slate-dark': '#2D2D30',
+          'slate-mid': '#3D3D42',
+          'slate-light': '#6B6B72',
+          'off-white': '#F0EDE8',
+          'warm-white': '#FAF8F5',
+        },
+        fontFamily: {
+          'serif': ['Cormorant Garamond', 'Georgia', 'serif'],
+          'sans': ['Montserrat', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  :root {
+    --gold: #C5A059;
+    --gold-light: #D4B575;
+    --black: #080808;
+    --slate: #2D2D30;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: #080808;
+    color: #F0EDE8;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ─── GOLD GRADIENT TEXT ─── */
+  .gold-text {
+    background: linear-gradient(135deg, #C5A059 0%, #E8D090 50%, #C5A059 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── GLASSMORPHIC NAVBAR ─── */
+  .navbar {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: rgba(8, 8, 8, 0.75);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  }
+
+  /* ─── HERO ─── */
+  .hero-bg {
+    background:
+      linear-gradient(to bottom, rgba(8,8,8,0.35) 0%, rgba(8,8,8,0.55) 60%, rgba(8,8,8,1) 100%),
+      url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1800&q=85&auto=format') center/cover no-repeat;
+  }
+
+  .hero-line {
+    display: block;
+    overflow: hidden;
+  }
+
+  .hero-line span {
+    display: block;
+    transform: translateY(110%);
+    opacity: 0;
+    animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hero-line:nth-child(1) span { animation-delay: 0.1s; }
+  .hero-line:nth-child(2) span { animation-delay: 0.25s; }
+  .hero-line:nth-child(3) span { animation-delay: 0.4s; }
+
+  @keyframes slideUp {
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.9s ease;
+  }
+  .fade-in.visible { opacity: 1; }
+
+  /* ─── GOLD DIVIDER ─── */
+  .gold-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* ─── SERVICE CARDS ─── */
+  .service-card {
+    background: linear-gradient(145deg, #1a1a1c, #111112);
+    border: 1px solid rgba(197,160,89,0.12);
+    transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(197,160,89,0.05), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+  }
+
+  .service-card:hover {
+    border-color: rgba(197,160,89,0.45);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 40px rgba(197,160,89,0.08);
+  }
+
+  .service-card:hover::before { opacity: 1; }
+
+  .service-card:hover .card-icon {
+    color: var(--gold);
+    transform: scale(1.1);
+  }
+
+  .card-icon {
+    transition: all 0.4s ease;
+    color: rgba(197,160,89,0.6);
+  }
+
+  /* ─── PORTFOLIO ─── */
+  .portfolio-item {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    aspect-ratio: 4/3;
+  }
+
+  .portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: brightness(0.7) saturate(0.8);
+  }
+
+  .portfolio-item:hover img {
+    transform: scale(1.07);
+    filter: brightness(0.85) saturate(1);
+  }
+
+  .portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    opacity: 1;
+  }
+
+  .portfolio-item:hover .portfolio-overlay {
+    background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.3) 70%);
+  }
+
+  /* ─── CTA BUTTON PRIMARY ─── */
+  .btn-gold {
+    background: linear-gradient(135deg, #C5A059, #A08040);
+    color: #080808;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    padding: 0.85rem 2rem;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .btn-gold::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .btn-gold:hover {
+    box-shadow: 0 8px 30px rgba(197,160,89,0.35);
+    transform: translateY(-2px);
+  }
+  .btn-gold:hover::after { opacity: 1; }
+
+  /* ─── CTA BUTTON GHOST ─── */
+  .btn-ghost {
+    background: transparent;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    padding: 0.82rem 1.8rem;
+    border: 1px solid rgba(197,160,89,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(197,160,89,0.08);
+    border-color: var(--gold);
+  }
+
+  /* ─── FORM ─── */
+  .form-field {
+    background: rgba(45,45,48,0.4);
+    border: 1px solid rgba(197,160,89,0.15);
+    color: #F0EDE8;
+    padding: 0.9rem 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    width: 100%;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    outline: none;
+  }
+
+  .form-field:focus {
+    border-color: rgba(197,160,89,0.6);
+    background: rgba(45,45,48,0.7);
+  }
+
+  .form-field::placeholder { color: rgba(240,237,232,0.3); }
+
+  .form-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(197,160,89,0.7);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ─── USP BADGE ─── */
+  .usp-item {
+    border-left: 2px solid rgba(197,160,89,0.4);
+    padding-left: 1.2rem;
+  }
+
+  /* ─── COUNTER SECTION ─── */
+  .stat-box {
+    position: relative;
+  }
+  .stat-box::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(197,160,89,0.3), transparent);
+  }
+  .stat-box:last-child::after { display: none; }
+
+  /* ─── SECTION LABELS ─── */
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(197,160,89,0.7);
+    font-weight: 500;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #080808; }
+  ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 2px; }
+
+  /* ─── MOBILE NAV ─── */
+  #mobile-menu {
+    display: none;
+    backdrop-filter: blur(20px);
+    background: rgba(8,8,8,0.97);
+    border-top: 1px solid rgba(197,160,89,0.15);
+  }
+  #mobile-menu.open { display: block; }
+
+  /* ─── TESTIMONIAL ─── */
+  .testimonial-card {
+    background: linear-gradient(145deg, #141416, #0e0e10);
+    border: 1px solid rgba(197,160,89,0.1);
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: rgba(197,160,89,0.15);
+    line-height: 1;
+  }
+
+  /* ─── PROCESS STEP ─── */
+  .process-step {
+    position: relative;
+  }
+  .process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: calc(50% + 1.5rem);
+    width: calc(100% - 3rem);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(197,160,89,0.4), rgba(197,160,89,0.1));
+  }
+
+  @media (max-width: 768px) {
+    .process-step:not(:last-child)::after { display: none; }
+  }
+</style>
+</head>
+<body class="bg-rich-black">
+
+<!-- ═══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════ -->
+<header class="navbar fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-8 h-8 border border-gold flex items-center justify-center">
+          <span class="text-gold font-serif font-bold text-xs tracking-widest">D</span>
+        </div>
+        <span class="font-serif text-lg font-semibold tracking-widest text-off-white">DUREVOLE</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#diensten" class="text-xs tracking-widest uppercase text-slate-light hover:text-gold transition-colors duration-200 font-medium">Diensten</a>
+        <a href="#projecten" class="text-xs tracking-widest uppercase text-slate-light hover:text-gold transition-colors duration-200 font-medium">Projecten</a>
+        <a href="#werkwijze" class="text-xs tracking-widest uppercase text-slate-light hover:text-gold transition-colors duration-200 font-medium">Werkwijze</a>
+        <a href="#contact" class="text-xs tracking-widest uppercase text-slate-light hover:text-gold transition-colors duration-200 font-medium">Contact</a>
+      </nav>
+
+      <!-- CTA -->
+      <div class="hidden md:block">
+        <a href="#contact" class="btn-gold inline-block">Gratis Intake Inplannen</a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button id="menu-toggle" class="md:hidden text-off-white" aria-label="Menu">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <div class="px-6 py-6 flex flex-col gap-5">
+      <a href="#diensten" class="text-xs tracking-widest uppercase text-slate-light hover:text-gold transition-colors" onclick="closeMobileMenu()">Diensten</a>
+      <a href="#projecten" class="text-xs tracking-widest uppercase text-slate-light hover:text-gold transition-colors" onclick="closeMobileMenu()">Projecten</a>
+      <a href="#werkwijze" class="text-xs tracking-widest uppercase text-slate-light hover:text-gold transition-colors" onclick="closeMobileMenu()">Werkwijze</a>
+      <a href="#contact" class="text-xs tracking-widest uppercase text-slate-light hover:text-gold transition-colors" onclick="closeMobileMenu()">Contact</a>
+      <a href="#contact" class="btn-gold inline-block text-center mt-2" onclick="closeMobileMenu()">Gratis Intake Inplannen</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="hero-bg relative min-h-screen flex flex-col justify-end pb-20 lg:pb-28 pt-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full">
+
+    <div class="mb-8">
+      <p class="section-label mb-6 fade-in">Exclusieve renovaties · Amstelveen & omgeving</p>
+
+      <h1 class="font-serif font-light leading-[0.95] mb-8" style="font-size: clamp(3rem, 8vw, 7.5rem);">
+        <span class="hero-line"><span class="text-off-white">Uw droomhuis,</span></span>
+        <span class="hero-line"><span class="gold-text italic">perfect</span></span>
+        <span class="hero-line"><span class="text-off-white">gerealiseerd.</span></span>
+      </h1>
+
+      <p class="text-slate-light font-light tracking-wide max-w-md mb-10 fade-up" style="font-size: 1rem; line-height: 1.8; animation-delay: 0.6s;">
+        Van eerste idee tot oplevering — wij ontzorgen u volledig.<br/>
+        <span class="text-gold/70">Vakmanschap zonder zorgen.</span>
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 fade-up" style="animation-delay: 0.75s;">
+        <a href="#contact" class="btn-gold inline-block text-center">Gratis Intake Inplannen</a>
+        <a href="#projecten" class="btn-ghost inline-block text-center">Bekijk Projecten</a>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="mt-16 pt-8 border-t border-white/10 grid grid-cols-3 gap-0 max-w-lg fade-up" style="animation-delay: 0.9s;">
+      <div class="stat-box text-center pr-4">
+        <p class="font-serif text-3xl font-light gold-text mb-1">50+</p>
+        <p class="text-xs text-slate-light tracking-wider uppercase">Projecten</p>
+      </div>
+      <div class="stat-box text-center px-4">
+        <p class="font-serif text-3xl font-light gold-text mb-1">100%</p>
+        <p class="text-xs text-slate-light tracking-wider uppercase">Ontzorgd</p>
+      </div>
+      <div class="stat-box text-center pl-4">
+        <p class="font-serif text-3xl font-light gold-text mb-1">3</p>
+        <p class="text-xs text-slate-light tracking-wider uppercase">Regio's</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 right-8 flex flex-col items-center gap-2 opacity-40">
+    <span class="text-xs tracking-widest uppercase text-off-white" style="writing-mode: vertical-rl;">Scroll</span>
+    <div class="w-px h-12 bg-gradient-to-b from-gold to-transparent"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     WHY DUREVOLE
+══════════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="fade-up">
+        <p class="section-label mb-5">Wij begrijpen jou</p>
+        <div class="gold-line mb-8"></div>
+        <h2 class="font-serif font-light text-off-white mb-6" style="font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1.1;">
+          Verbouwen<br/><em class="gold-text">zonder zorgen</em>
+        </h2>
+        <p class="text-slate-light leading-relaxed mb-8 font-light" style="font-size: 0.95rem;">
+          Een verbouwing is spannend. U investeert veel geld, tijd en vertrouwen. 
+          Wij zijn een betrokken bouwbedrijf met jarenlange ervaring — geen grote, 
+          onpersoonlijke aannemerij, maar een team dat meedenkt, adviseert en 
+          verantwoordelijkheid neemt.
+        </p>
+        <p class="text-slate-light leading-relaxed font-light" style="font-size: 0.95rem;">
+          Wij geloven dat een verbouwing pas écht geslaagd is als u volledig ontzorgd bent, 
+          de communicatie helder is, en het eindresultaat klopt tot in de details.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-5 fade-up" style="transition-delay: 0.2s;">
+        <div class="usp-item">
+          <p class="text-off-white font-medium text-sm mb-1">Heldere afspraken</p>
+          <p class="text-slate-light text-xs leading-relaxed font-light">Geen verrassingen achteraf. Transparante communicatie van begin tot einde.</p>
+        </div>
+        <div class="usp-item">
+          <p class="text-off-white font-medium text-sm mb-1">Vaste planning</p>
+          <p class="text-slate-light text-xs leading-relaxed font-light">U weet wanneer we starten én wanneer we opleveren. Geen uitlopen zonder reden.</p>
+        </div>
+        <div class="usp-item">
+          <p class="text-off-white font-medium text-sm mb-1">Ervaren vakmensen</p>
+          <p class="text-slate-light text-xs leading-relaxed font-light">Kwaliteit staat altijd voorop. Elk detail wordt met zorg uitgevoerd.</p>
+        </div>
+        <div class="usp-item">
+          <p class="text-off-white font-medium text-sm mb-1">Persoonlijk contact</p>
+          <p class="text-slate-light text-xs leading-relaxed font-light">Korte lijnen, snel schakelen. Altijd een vast aanspreekpunt voor uw project.</p>
+        </div>
+        <div class="mt-4">
+          <a href="#contact" class="btn-gold inline-block">Plan een gratis intake</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     DIENSTEN
+══════════════════════════════════════════════ -->
+<section id="diensten" class="py-24 lg:py-32 relative z-10" style="background: linear-gradient(180deg, #080808 0%, #0d0d0f 50%, #080808 100%);">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center mb-16 fade-up">
+      <p class="section-label mb-5">Onze specialisaties</p>
+      <div class="gold-line mx-auto mb-8"></div>
+      <h2 class="font-serif font-light text-off-white" style="font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1.1;">
+        Van idee tot <em class="gold-text italic">realisatie</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- Badkamer -->
+      <div class="service-card p-8 fade-up">
+        <div class="card-icon mb-6">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 12h18M3 12a9 9 0 009 9m-9-9a9 9 0 019-9m0 18a9 9 0 009-9m-9 9V3m9 9H3"/>
+          </svg>
+        </div>
+        <p class="section-label mb-3">01</p>
+        <h3 class="font-serif text-2xl font-light text-off-white mb-4">Badkamer</h3>
+        <p class="text-slate-light text-sm leading-relaxed font-light mb-6">
+          Complete transformatie naar een moderne, rustige badkamer met inloopdouche, 
+          maatwerk en warme materialen. Van eerste ontwerp tot laatste voeg.
+        </p>
+        <ul class="space-y-2 mb-8">
+          <li class="flex items-center gap-2 text-xs text-slate-light"><span class="w-1 h-1 rounded-full bg-gold inline-block"></span>Inloopdouche & maatwerk</li>
+          <li class="flex items-center gap-2 text-xs text-slate-light"><span class="w-1 h-1 rounded-full bg-gold inline-block"></span>Vloerverwarming & tegelwerk</li>
+          <li class="flex items-center gap-2 text-xs text-slate-light"><span class="w-1 h-1 rounded-full bg-gold inline-block"></span>Loodgieterij & elektra</li>
+        </ul>
+        <a href="#contact" class="text-gold text-xs tracking-widest uppercase font-medium hover:text-gold-light transition-colors">Offerte aanvragen →</a>
+      </div>
+
+      <!-- Keuken -->
+      <div class="service-card p-8 fade-up" style="transition-delay: 0.15s; background: linear-gradient(145deg, #1c1a14, #141209); border-color: rgba(197,160,89,0.2);">
+        <div class="card-icon mb-6" style="color: var(--gold);">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 6h18M3 10h18M3 14h18M3 18h18M9 2v4M15 2v4"/>
+          </svg>
+        </div>
+        <p class="section-label mb-3" style="color: var(--gold);">02</p>
+        <h3 class="font-serif text-2xl font-light text-off-white mb-4">Keuken</h3>
+        <p class="text-slate-light text-sm leading-relaxed font-light mb-6">
+          De keuken als hart van uw woning. Wij realiseren keukens die functioneel 
+          perfect én visueel indrukwekkend zijn — volledig op maat, precies zoals u het voor ogen heeft.
+        </p>
+        <ul class="space-y-2 mb-8">
+          <li class="flex items-center gap-2 text-xs text-slate-light"><span class="w-1 h-1 rounded-full bg-gold inline-block"></span>Maatwerk keukenontwerp</li>
+          <li class="flex items-center gap-2 text-xs text-slate-light"><span class="w-1 h-1 rounded-full bg-gold inline-block"></span>Installatie & afwerking</li>
+          <li class="flex items-center gap-2 text-xs text-slate-light"><span class="w-1 h-1 rounded-full bg-gold inline-block"></span>Kookeiland & opbergsystemen</li>
+        </ul>
+        <a href="#contact" class="text-gold text-xs tracking-widest uppercase font-medium hover:text-gold-light transition-colors">Offerte aanvragen →</a>
+      </div>
+
+      <!-- Uitbouw -->
+      <div class="service-card p-8 fade-up" style="transition-delay: 0.3s;">
+        <div class="card-icon mb-6">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 21h18M3 10l9-7 9 7M5 10v11M19 10v11M9 21V15h6v6"/>
+          </svg>
+        </div>
+        <p class="section-label mb-3">03</p>
+        <h3 class="font-serif text-2xl font-light text-off-white mb-4">Uitbouw</h3>
+        <p class="text-slate-light text-sm leading-relaxed font-light mb-6">
+          Extra leefruimte die naadloos aansluit op uw bestaande woning. Constructief 
+          correct, esthetisch perfect — van vergunningsaanvraag tot oplevering.
+        </p>
+        <ul class="space-y-2 mb-8">
+          <li class="flex items-center gap-2 text-xs text-slate-light"><span class="w-1 h-1 rounded-full bg-gold inline-block"></span>Aanbouw & opbouw</li>
+          <li class="flex items-center gap-2 text-xs text-slate-light"><span class="w-1 h-1 rounded-full bg-gold inline-block"></span>Vergunningstraject</li>
+          <li class="flex items-center gap-2 text-xs text-slate-light"><span class="w-1 h-1 rounded-full bg-gold inline-block"></span>Complete afwerking</li>
+        </ul>
+        <a href="#contact" class="text-gold text-xs tracking-widest uppercase font-medium hover:text-gold-light transition-colors">Offerte aanvragen →</a>
+      </div>
+    </div>
+
+    <!-- Additional services note -->
+    <p class="text-center text-slate-light text-xs tracking-wider mt-10 fade-up">
+      Ook voor complete woningrenovaties, zolderverbouwingen en appartementrenovaties — <a href="#contact" class="text-gold hover:text-gold-light transition-colors">vraag naar de mogelijkheden</a>.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PORTFOLIO
+══════════════════════════════════════════════ -->
+<section id="projecten" class="py-24 lg:py-32 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 fade-up">
+      <div>
+        <p class="section-label mb-5">Recent gerealiseerd</p>
+        <div class="gold-line mb-6"></div>
+        <h2 class="font-serif font-light text-off-white" style="font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1.1;">
+          Onze <em class="gold-text italic">projecten</em>
+        </h2>
+      </div>
+      <a href="#contact" class="btn-ghost self-start md:self-auto whitespace-nowrap">Neem Contact Op</a>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- Project 1 – Uithoorn -->
+      <div class="portfolio-item fade-up lg:col-span-2" style="aspect-ratio: 16/9;">
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80&auto=format"
+          alt="Uitbouw Uithoorn"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay">
+          <span class="text-gold text-xs tracking-widest uppercase font-medium mb-1">Uithoorn</span>
+          <h3 class="font-serif text-xl text-off-white font-light">Begane grond uitbouw</h3>
+          <p class="text-slate-light text-xs mt-1">Ruime achteruitbouw · Extra leefruimte en licht · Nieuwe leefkeuken als hart van de woning</p>
+        </div>
+      </div>
+
+      <!-- Project 2 – Amstelveen Badkamer -->
+      <div class="portfolio-item fade-up" style="transition-delay: 0.1s;">
+        <img
+          src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80&auto=format"
+          alt="Badkamerrenovatie Amstelveen"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay">
+          <span class="text-gold text-xs tracking-widest uppercase font-medium mb-1">Amstelveen</span>
+          <h3 class="font-serif text-xl text-off-white font-light">Badkamerrenovatie</h3>
+          <p class="text-slate-light text-xs mt-1">Inloopdouche · Maatwerk · Warme materialen</p>
+        </div>
+      </div>
+
+      <!-- Project 3 – Mijdrecht -->
+      <div class="portfolio-item fade-up" style="transition-delay: 0.2s;">
+        <img
+          src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80&auto=format"
+          alt="Appartementrenovatie Mijdrecht"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay">
+          <span class="text-gold text-xs tracking-widest uppercase font-medium mb-1">Mijdrecht</span>
+          <h3 class="font-serif text-xl text-off-white font-light">Appartementrenovatie</h3>
+          <p class="text-slate-light text-xs mt-1">Slimme herindeling · Open ruimtes · Volledig gemoderniseerd</p>
+        </div>
+      </div>
+
+      <!-- Project 4 – Keuken -->
+      <div class="portfolio-item fade-up" style="transition-delay: 0.3s;">
+        <img
+          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80&auto=format"
+          alt="Keukenrenovatie"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay">
+          <span class="text-gold text-xs tracking-widest uppercase font-medium mb-1">Amstelveen</span>
+          <h3 class="font-serif text-xl text-off-white font-light">Keukenverbouwing</h3>
+          <p class="text-slate-light text-xs mt-1">Maatwerk keuken · Kookeiland · Lichte open indeling</p>
+        </div>
+      </div>
+
+      <!-- Project 5 – Complete renovatie -->
+      <div class="portfolio-item fade-up lg:col-span-2" style="aspect-ratio: 16/9; transition-delay: 0.4s;">
+        <img
+          src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80&auto=format"
+          alt="Complete woningrenovatie"
+          loading="lazy"
+        />
+        <div class="portfolio-overlay">
+          <span class="text-gold text-xs tracking-widest uppercase font-medium mb-1">Uithoorn</span>
+          <h3 class="font-serif text-xl text-off-white font-light">Complete woningrenovatie</h3>
+          <p class="text-slate-light text-xs mt-1">Van a tot z ontzorgd · Nieuw interieur · Modernisering jaren-30 woning</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     WERKWIJZE
+══════════════════════════════════════════════ -->
+<section id="werkwijze" class="py-24 lg:py-32 relative z-10" style="background: linear-gradient(180deg, #080808 0%, #0c0c0e 100%);">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center mb-16 fade-up">
+      <p class="section-label mb-5">Hoe wij werken</p>
+      <div class="gold-line mx-auto mb-8"></div>
+      <h2 class="font-serif font-light text-off-white" style="font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1.1;">
+        Van eerste idee<br/>tot <em class="gold-text italic">oplevering</em>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="process-step text-center fade-up">
+        <div class="w-12 h-12 border border-gold/30 flex items-center justify-center mx-auto mb-5">
+          <span class="font-serif text-gold text-lg">01</span>
+        </div>
+        <h3 class="text-sm font-medium text-off-white mb-2 tracking-wide">Gratis intake</h3>
+        <p class="text-xs text-slate-light leading-relaxed font-light">We luisteren naar uw wensen en bekijken de situatie ter plaatse — vrijblijvend en eerlijk.</p>
+      </div>
+      <div class="process-step text-center fade-up" style="transition-delay: 0.1s;">
+        <div class="w-12 h-12 border border-gold/30 flex items-center justify-center mx-auto mb-5">
+          <span class="font-serif text-gold text-lg">02</span>
+        </div>
+        <h3 class="text-sm font-medium text-off-white mb-2 tracking-wide">Helder voorstel</h3>
+        <p class="text-xs text-slate-light leading-relaxed font-light">U ontvangt een gedetailleerde offerte met vaste prijs, planning en scope. Geen verrassingen.</p>
+      </div>
+      <div class="process-step text-center fade-up" style="transition-delay: 0.2s;">
+        <div class="w-12 h-12 border border-gold/30 flex items-center justify-center mx-auto mb-5">
+          <span class="font-serif text-gold text-lg">03</span>
+        </div>
+        <h3 class="text-sm font-medium text-off-white mb-2 tracking-wide">Vakkundige uitvoering</h3>
+        <p class="text-xs text-slate-light leading-relaxed font-light">Ons team gaat aan de slag — met vaste planning, dagelijkse updates en oog voor detail.</p>
+      </div>
+      <div class="process-step text-center fade-up" style="transition-delay: 0.3s;">
+        <div class="w-12 h-12 border border-gold/30 flex items-center justify-center mx-auto mb-5">
+          <span class="font-serif text-gold text-lg">04</span>
+        </div>
+        <h3 class="text-sm font-medium text-off-white mb-2 tracking-wide">Oplevering</h3>
+        <p class="text-xs text-slate-light leading-relaxed font-light">We leveren op zoals afgesproken. U geniet van het resultaat, jarenlang.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center mb-12 fade-up">
+      <p class="section-label mb-5">Wat klanten zeggen</p>
+      <div class="gold-line mx-auto"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="testimonial-card p-8 fade-up">
+        <div class="flex gap-1 mb-4">
+          <span class="text-gold text-sm">★★★★★</span>
+        </div>
+        <p class="text-slate-light text-sm leading-relaxed font-light mb-6 italic">
+          "Durevole heeft onze badkamer volledig getransformeerd. Alles liep precies zoals beloofd — geen verrassingen, gewoon vakwerk."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-slate-dark flex items-center justify-center">
+            <span class="text-gold text-xs font-serif">M</span>
+          </div>
+          <div>
+            <p class="text-off-white text-xs font-medium">Marieke V.</p>
+            <p class="text-slate-light text-xs">Amstelveen</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card p-8 fade-up" style="transition-delay: 0.15s;">
+        <div class="flex gap-1 mb-4">
+          <span class="text-gold text-sm">★★★★★</span>
+        </div>
+        <p class="text-slate-light text-sm leading-relaxed font-light mb-6 italic">
+          "De uitbouw is precies wat we voor ogen hadden. Het team communiceerde perfect en de oplevering was op de dag zoals gepland."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-slate-dark flex items-center justify-center">
+            <span class="text-gold text-xs font-serif">J</span>
+          </div>
+          <div>
+            <p class="text-off-white text-xs font-medium">Jan & Sandra K.</p>
+            <p class="text-slate-light text-xs">Uithoorn</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card p-8 fade-up" style="transition-delay: 0.3s;">
+        <div class="flex gap-1 mb-4">
+          <span class="text-gold text-sm">★★★★★</span>
+        </div>
+        <p class="text-slate-light text-sm leading-relaxed font-light mb-6 italic">
+          "Eindelijk een aannemer die doet wat hij zegt. Nette vakmensen, scherpe prijs en een resultaat waar we dagelijks van genieten."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-slate-dark flex items-center justify-center">
+            <span class="text-gold text-xs font-serif">R</span>
+          </div>
+          <div>
+            <p class="text-off-white text-xs font-medium">Robert H.</p>
+            <p class="text-slate-light text-xs">Mijdrecht</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CONTACT / FORM
+══════════════════════════════════════════════ -->
+<section id="contact" class="py-24 lg:py-32 relative z-10" style="background: linear-gradient(180deg, #080808 0%, #0d0c0a 100%);">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Left -->
+      <div class="fade-up">
+        <p class="section-label mb-5">Offerte Aanvragen</p>
+        <div class="gold-line mb-8"></div>
+        <h2 class="font-serif font-light text-off-white mb-6" style="font-size: clamp(2.2rem, 4vw, 3.8rem); line-height: 1.1;">
+          Ook <em class="gold-text italic">verbouwplannen?</em>
+        </h2>
+        <p class="text-slate-light leading-relaxed font-light mb-10" style="font-size: 0.95rem;">
+          Wij denken graag met u mee — vrijblijvend en eerlijk. Vul het formulier in en we nemen binnen 24 uur contact met u op voor een gratis intake.
+        </p>
+
+        <div class="space-y-5">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 border border-gold/25 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-off-white text-sm font-medium mb-0.5">Werkgebied</p>
+              <p class="text-slate-light text-xs font-light">Amstelveen · Uithoorn · Mijdrecht en geheel omgeving Noord-Holland</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 border border-gold/25 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-off-white text-sm font-medium mb-0.5">Direct contact</p>
+              <p class="text-slate-light text-xs font-light">Bereikbaar op werkdagen · Reactie binnen 24 uur gegarandeerd</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="fade-up" style="transition-delay: 0.2s;">
+        <form onsubmit="handleSubmit(event)" class="space-y-5" style="background: linear-gradient(145deg, #111112, #0d0d0f); border: 1px solid rgba(197,160,89,0.12); padding: 2.5rem;">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="form-label">Naam *</label>
+              <input type="text" class="form-field" placeholder="Uw volledige naam" required />
+            </div>
+            <div>
+              <label class="form-label">Telefoon *</label>
+              <input type="tel" class="form-field" placeholder="+31 6 ..." required />
+            </div>
+          </div>
+          <div>
+            <label class="form-label">E-mail *</label>
+            <input type="email" class="form-field" placeholder="uw@email.nl" required />
+          </div>
+          <div>
+            <label class="form-label">Type project</label>
+            <select class="form-field" style="appearance: none; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22%23C5A059%22 viewBox=%220 0 20 20%22><path d=%22M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z%22/></svg>'); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1rem;">
+              <option value="" style="background:#1a1a1c">Selecteer een dienst...</option>
+              <option value="badkamer" style="background:#1a1a1c">Badkamerrenovatie</option>
+              <option value="keuken" style="background:#1a1a1c">Keukenverbouwing</option>
+              <option value="uitbouw" style="background:#1a1a1c">Uitbouw / Aanbouw</option>
+              <option value="renovatie" style="background:#1a1a1c">Complete woningrenovatie</option>
+              <option value="anders" style="background:#1a1a1c">Anders</option>
+            </select>
+          </div>
+          <div>
+            <label class="form-label">Locatie / Wensen</label>
+            <textarea class="form-field" rows="4" placeholder="Vertel ons meer over uw project, locatie en gewenste planning..."></textarea>
+          </div>
+          <button type="submit" class="btn-gold w-full text-center" id="submit-btn">
+            Offerte Aanvragen
+          </button>
+          <p class="text-xs text-slate-light text-center">Vrijblijvend · Reactie binnen 24 uur · Gratis intake ter plaatse</p>
+        </form>
+
+        <!-- Success message -->
+        <div id="form-success" class="hidden mt-4 p-5 border border-gold/30 text-center">
+          <p class="text-gold font-serif text-xl mb-2">Bedankt!</p>
+          <p class="text-slate-light text-sm">We nemen binnen 24 uur contact met u op voor uw gratis intake.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="relative z-10 border-t border-white/8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-8 h-8 border border-gold flex items-center justify-center">
+            <span class="text-gold font-serif font-bold text-xs">D</span>
+          </div>
+          <span class="font-serif text-lg font-semibold tracking-widest text-off-white">DUREVOLE</span>
+        </div>
+        <p class="text-slate-light text-sm leading-relaxed font-light max-w-xs mb-6">
+          Vakmanschap zonder zorgen. Exclusieve renovaties in Amstelveen, Uithoorn en omgeving.
+        </p>
+        <p class="text-xs text-slate-light italic font-serif">"Van eerste idee tot oplevering."</p>
+      </div>
+
+      <!-- Diensten -->
+      <div>
+        <p class="section-label mb-5">Diensten</p>
+        <ul class="space-y-3">
+          <li><a href="#diensten" class="text-slate-light text-xs hover:text-gold transition-colors font-light">Badkamerrenovatie</a></li>
+          <li><a href="#diensten" class="text-slate-light text-xs hover:text-gold transition-colors font-light">Keukenverbouwing</a></li>
+          <li><a href="#diensten" class="text-slate-light text-xs hover:text-gold transition-colors font-light">Uitbouw & Aanbouw</a></li>
+          <li><a href="#diensten" class="text-slate-light text-xs hover:text-gold transition-colors font-light">Woningrenovatie</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact info -->
+      <div>
+        <p class="section-label mb-5">Gegevens</p>
+        <ul class="space-y-3">
+          <li class="text-slate-light text-xs font-light">
+            <span class="text-gold/60 block text-xs mb-0.5">KVK</span>
+            Durevole B.V.
+          </li>
+          <li class="text-slate-light text-xs font-light">
+            <span class="text-gold/60 block text-xs mb-0.5">Werkgebied</span>
+            Amstelveen · Uithoorn · Mijdrecht
+          </li>
+          <li class="text-slate-light text-xs font-light">
+            <span class="text-gold/60 block text-xs mb-0.5">Website</span>
+            durevole-bv.nl
+          </li>
+        </ul>
+        <!-- Social -->
+        <div class="flex gap-3 mt-6">
+          <a href="#" class="w-8 h-8 border border-white/10 flex items-center justify-center hover:border-gold/40 transition-colors group" aria-label="Instagram">
+            <svg class="w-3.5 h-3.5 text-slate-light group-hover:text-gold transition-colors" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <a href="#" class="w-8 h-8 border border-white/10 flex items-center justify-center hover:border-gold/40 transition-colors group" aria-label="Facebook">
+            <svg class="w-3.5 h-3.5 text-slate-light group-hover:text-gold transition-colors" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://durevole-bv.nl" class="w-8 h-8 border border-white/10 flex items-center justify-center hover:border-gold/40 transition-colors group" aria-label="Website">
+            <svg class="w-3.5 h-3.5 text-slate-light group-hover:text-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-8 border-t border-white/8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-slate-light font-light">© 2025 Durevole B.V. · Alle rechten voorbehouden</p>
+      <a href="https://durevole-bv.nl/contact" class="text-xs text-slate-light hover:text-gold transition-colors font-light">Privacybeleid</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     JS
+══════════════════════════════════════════════ -->
+<script>
+  // ─── MOBILE MENU ───
+  const toggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  toggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  }
+
+  // ─── SCROLL ANIMATIONS ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
+
+  // ─── STAGGERED DELAYS FOR CHILDREN ───
+  document.querySelectorAll('[data-stagger]').forEach((parent, pi) => {
+    parent.querySelectorAll('.fade-up').forEach((child, ci) => {
+      child.style.transitionDelay = `${ci * 0.1}s`;
+    });
+  });
+
+  // ─── FORM SUBMIT ───
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Verzenden...';
+    btn.disabled = true;
+    setTimeout(() => {
+      e.target.style.display = 'none';
+      document.getElementById('form-success').classList.remove('hidden');
+    }, 1200);
+  }
+
+  // ─── NAVBAR SCROLL STATE ───
+  window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.style.borderBottomColor = 'rgba(197,160,89,0.25)';
+    } else {
+      navbar.style.borderBottomColor = 'rgba(197,160,89,0.15)';
+    }
+  });
+</script>
+</body>
+</html>
